@@ -8,6 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
     private static final String BASE_URL = "https://gemspeak.builtlab.io.vn";
+    private static String accessToken = "";
     private static Retrofit retrofit;
 
     public static Retrofit getClient() {
@@ -29,5 +30,13 @@ public class ApiClient {
         }
 
         return retrofit;
+    }
+
+     public static String getAccessToken() {
+        return accessToken;
+    }
+
+    public static void updateAccessToken(String newValue) {
+        accessToken = newValue;
     }
 }

@@ -14,7 +14,7 @@ public class AuthInterceptor implements Interceptor {
     public Response intercept(@NonNull Chain chain) throws IOException {
         Request original = chain.request();
         Request request = original.newBuilder()
-                .header("Authorization", "Bearer YOUR")
+                .header("Authorization", "Bearer " + ApiClient.getAccessToken())
                 .header("Accept", "application/json")
                 .method(original.method(), original.body())
                 .build();

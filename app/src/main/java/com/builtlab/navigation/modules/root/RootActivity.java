@@ -6,6 +6,7 @@ import android.view.MenuItem;
 import android.window.OnBackInvokedDispatcher;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -14,11 +15,13 @@ import androidx.navigation.ui.NavigationUI;
 import com.builtlab.navigation.BaseActivity;
 import com.builtlab.navigation.R;
 import com.builtlab.navigation.databinding.ActivityRootBinding;
+import com.builtlab.navigation.modules.home.HomeViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class RootActivity extends BaseActivity {
 
     private ActivityRootBinding binding;
+    private HomeViewModel homeViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,7 @@ public class RootActivity extends BaseActivity {
 
         binding = ActivityRootBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
 
         BottomNavigationView bottomNavigationView = binding.navView;
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
@@ -40,7 +44,13 @@ public class RootActivity extends BaseActivity {
 //        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
 
+    }
 
+    public HomeViewModel getHomeViewModel() {
+        if (homeViewModel == null) {
+            homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
+        }
+        return homeViewModel;
     }
 
     @Override

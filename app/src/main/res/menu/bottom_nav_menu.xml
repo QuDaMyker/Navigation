@@ -5,7 +5,7 @@
         android:icon="@android:drawable/ic_menu_gallery"
         android:title="Home" />
     <item
-        android:id="@+id/optionsFragment"
+        android:id="@+id/topicsFragment"
         android:icon="@android:drawable/ic_menu_preferences"
-        android:title="Options" />
+        android:title="Topics" />
 </menu>
